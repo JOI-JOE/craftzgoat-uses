@@ -9,18 +9,6 @@
   --color-background: var(--background);
 }
 
-:root {
-  --text-fg: #000;
-
-  :where(.dark) {
-    --text-fg: #fff;
-  }
-}
-
-@theme inline {
-  --color-fg: var(--text-fg);
-}
-
 body {
   margin: 0;
   padding: 0;
