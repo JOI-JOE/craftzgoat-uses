@@ -1,62 +1,36 @@
 ---
-import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
-import Masthead from '../../components/Masthead.astro';
 import Content from '../../components/Content.astro';
+import BlogPost from '../../layouts/BlogPost.astro';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const {
+  content: { title, description, heroImage }
+} = Astro.props
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
+<BlogPost
+	title={title}
+	description={description}
 >
-	<main class="pt-[56px]">
-		<Masthead/>
-		<!-- <h1 class="font-proxima-soft text-center">What I use</h1> -->
-		<Content>
-			<section>
-				<p class="mb-8 indent-4">
-					As an indie developer, I've been spending hours and hours at my desk every day. So, I've been continuously improving my workspace in order to boost my productivity. Whenever I upload new content, people ask me what tools I use. So, here is a living snapshot and a place to point curious developers to when I get asked. Each item has my review, and most of the links are amazon affiliate links, so I'll get filthy rich if you click them and buy something.
-					<a class="inline-flex items-center gap-1 indent-1 text-orange-500" href="https://www.youtube.com/watch?v=3_JE76PKBWE&t=5437s">Learn more about me <IoArrowForward className="inline" /></a>
-				</p>
-			</section>
-
-			  <section>
-          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {
-              posts.map(post => {
-                return (
-                <li class="text-center mb-4">
-                  <a href={`/posts/${post.id}/`}>
-                    {post.data.heroImage && (
-                      <Image
-                      class="border border-slate-300 dark:border-zinc-700 rounded-xl"
-                      src={post.data.heroImage}
-                      width={720} 
-                      height={720 / 1.777}
-                      alt="Thumbnail"
-                      />
-                    )}
-                    <div class="mt-3 text-xl font-bold">
-                      {post.data.title}
-                    </div>
-                    {post.data.description && (
-                      <div class="opacity-70">
-                        {post.data.description}
-                      </div>
-                    )}
-                  </a>
-                </li>
-              )
-              })
-            }
-          </ul>
-        </section>
-
-		</Content>
-	</main>
-</Layout>
+	 <main class="pt-[56px]">
+      <Content className="pt-6 markdown-body">
+        <div class="mb-8">
+          {
+            heroImage && (
+              <img
+                class="border border-slate-300 dark:border-zinc-700 rounded-xl"
+                width={720}
+                height={360}
+                src={heroImage}
+                alt=""
+              />
+            )
+          }
+        </div>
+        <h1 class="text-3xl my-1 font-mplus">{title}</h1>
+        <div>{description}</div>
+        <hr class="border-top border-zinc-400 my-4" />
+        <slot />
+      </Content>
+    </main>
+</BlogPost>

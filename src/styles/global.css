@@ -18,3 +18,50 @@ body {
   text-rendering: optimizeLegibility;
   overflow-wrap: break-word;
 }
+
+main article.markdown-body {
+  /* List */
+  ul {
+    @apply list-disc list-inside pl-4 mb-4;
+  }
+
+  /* Headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-bold font-proxima-soft;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-lg;
+  }
+
+  /* Images */
+  img {
+    @apply border border-slate-300 dark:border-zinc-700 rounded-xl mb-6;
+  }
+
+  /* Paragraph */
+  p {
+    @apply mb-6;
+  }
+
+  /* Links */
+  a {
+    @apply underline underline-offset-2 hover:text-orange-500 decoration-orange-500;
+  }
+}
