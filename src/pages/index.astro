@@ -15,8 +15,6 @@ const posts = (await getCollection('blog')).sort(
 	title="About Me"
 	description="Lorem ipsum dolor sit amet"
 >
-	<main class="pt-[56px]">
-		<Masthead/>
 		<!-- <h1 class="font-proxima-soft text-center">What I use</h1> -->
 		<Content>
 			<section>
@@ -57,7 +55,4 @@ const posts = (await getCollection('blog')).sort(
             }
           </ul>
         </section>
-
-		</Content>
-	</main>
 </Layout>
