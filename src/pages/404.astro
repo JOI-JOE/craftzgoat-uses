@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Content from '../components/Content.astro';
+import Masthead from '../components/Masthead.astro';
+import { IoChevronForward } from 'react-icons/io5';
+
+---
+<Layout
+	title="About Me"
+	description="Lorem ipsum dolor sit amet"
+>
+	<main class="pt-[56px]">
+		<Masthead/>
+		<Content>
+			<section>
+				<h1 class="text-3xl text-center font-proxima-soft">Opps, not found page</h1>
+				<div class="text-center py-4">
+					<a href="/" class="inline-flex items-center gap-1 underline underline-offset-2 decoration-orange-500">Go to Index <IoChevronForward/> </a>
+				</div>
+			</section>
+		</Content>
+	</main>
+</Layout>
