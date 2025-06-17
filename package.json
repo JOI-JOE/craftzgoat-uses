@@ -3,7 +3,8 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "sync:images": "node sync-images.mjs",
+    "dev": "yarn run sync:images && astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
